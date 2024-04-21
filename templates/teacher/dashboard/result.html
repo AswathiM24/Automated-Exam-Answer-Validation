@@ -1,0 +1,68 @@
+{% extends 'teacher/dashboard/Parent.html' %}
+
+{% block content %}
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="card-title"> Results</h4>
+{#                    <button class="btn">Force Validate</button>#}
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead class=" text-primary">
+                            <tr>
+                                <th>
+                                    Que.No
+                                </th>
+                                <th>
+                                    Answer
+                                </th>
+                                <th>
+                                    Student
+                                </th>
+                                <th>Term</th>
+                                <th>Mark Scored</th>
+                                <th>Valuated</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for i in result %}
+                            <tr>
+                                <td>
+                                    {{ i.question_num }}
+                                </td>
+                                <td>
+                                    {{ i.answer }}
+                                </td>
+                                <td>
+                                    {{ i.student.name }}
+                                </td>
+                                <td>
+                                    {{ i.paper_code }}
+                                </td>
+                                <td>
+                                    {{ i.mark }}
+                                </td>
+                                <td>
+                                    {% if not i.is_processing %}
+                                        Processed
+                                    {% else %}
+                                        Pending
+                                    {% endif %}
+                                </td>
+                            </tr>
+                            {% endfor %}
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}

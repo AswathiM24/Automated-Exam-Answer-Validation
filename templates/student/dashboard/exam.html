@@ -1,0 +1,47 @@
+{% extends 'student/dashboard/Parent.html' %}
+
+{% block content %}
+
+    <div class="d-flex justify-content-center row">
+        <div class="col-md-10 col-lg-10">
+            <form method="POST">
+                {% csrf_token %}
+                <div class="border">
+                    <div class="question bg-white p-3 border-bottom">
+                        <div class="d-flex flex-row justify-content-between align-items-center mcq">
+                            <h4>Online Test {{ term }}</h4><span>{{ Name }}:{{ regNum }}</span></div>
+                    </div>
+                    <input type="hidden" name="term" value="{{ term }}">
+                    <input type="hidden" name="regNum" value="{{ regNum }}">
+                    {% for i in questions %}
+                        <div class="question mt-2 bg-white p-3 border-bottom">
+                            <div class="d-flex flex-row align-items-center question-title">
+                                <h3 class="text-danger">Q.{{forloop.counter}}</h3>
+                                <h5 class="mt-1 ml-2">{{i}}?</h5>
+                                <input type="hidden" name="question_number" value="{{ i.question_num }}">
+                            </div>
+                            <div class="ans ml-2 form-group">
+                                <label>
+                                    <textarea class="form-control" rows="3" style="width:44dvw"  name="answer"  placeholder="enter your answer"></textarea>
+                                </label>
+                            </div>
+                        </div>
+                    {% endfor %}
+
+
+                    <div class="d-flex flex-row justify-content-between align-items-center p-3 bg-white">
+                        <button class="btn btn-primary d-flex align-items-center btn-danger" type="reset"><i
+                                class="fa fa-refresh mt-1 mr-1"></i>&nbsp;clear
+                        </button>
+                        {#                    <button onclick="redirectHome(event)" class="btn btn-primary d-flex align-items-center btn-info" ><i#}
+                        {#                            class="fa fa-home mt-1 mr-1"></i>&nbsp;Home#}
+                        {#                    </button>#}
+                        <button class="btn btn-primary border-success align-items-center btn-success" type="submit">submit<i
+                                class="fa fa-check  ml-2"></i></button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,58 @@
+@import url('https://fonts.googleapis.com/css2?family=Maven+Pro&display=swap');
+* { box-sizing: border-box}
+
+body{
+    margin: 0 auto;
+    font-family: 'Maven Pro', sans-serif;
+}
+
+.wrapper-instruction {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 76dvh;
+    background: linear-gradient(to bottom right,#87D4CA 50%,#FD9B81 50%);
+
+}
+
+.box {
+    width: 70%;
+    height: 70%;
+    background-color: white;
+    border-radius: .5rem;
+    border:1px solid transparent;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+    /*overflow-y: scroll;*/
+}
+
+.box h2{
+    color:#FF6C54;
+    font-weight: 1000;
+}
+
+.content{
+    color:#909EA1;
+    height: 80%;
+    overflow-x: auto;
+}
+
+.content::-webkit-scrollbar{
+    width: .3rem;
+}
+
+.content::-webkit-scrollbar-track{
+    border-radius: 8px;
+    background-color: #909EA1;
+    border: 1px solid #cacaca;
+}
+.content::-webkit-scrollbar-thumb {
+    border-radius: 8px;
+    background-color: #87D4CA;
+}
+
+.acceptBtn button{
+    background-color: #87D4CA;
+    height: 5vh;
+    border: 1px solid transparent;
+    border-radius: 20px;
+}

@@ -1,0 +1,53 @@
+{% extends 'student/dashboard/Parent.html' %}
+{% load static %}
+{% block content %}
+    <link rel="stylesheet" href="{% static 'css/new_home.css' %}">
+    <div class="wrapper-instruction">
+        <div class="box p-2">
+            <h2 class="text-center">Instructions for the Exam</h2>
+            <div class="content">
+                <h5>!!Last updated:April 17,2024</h5>
+                <p>
+                    Dear students,
+                    We would like to remind you that malpractice during online examinations is strictly prohibited and will not be tolerated. We expect all students to uphold the highest standards of academic integrity and honesty.
+                    To help prevent malpractice, please adhere to the following guidelines during your online examinations:
+                </p>
+                <ul>
+                    <li>Do not attempt to cheat or access unauthorized resources during the examination. This includes using external devices, textbooks, notes, or communication with other individuals.</li>
+                    <li>Do not plagiarize or copy content from external sources without proper citation or attribution.</li>
+                    <li>Do not share your login credentials or allow anyone else to take the exam on your behalf.</li>
+                </ul>
+                <p>
+                    If you are found to have engaged in malpractice during the examination, you may face serious consequences,<span style="color:red">including a failing grade, academic penalties, or even expulsion from the institution</span> .
+                    We trust that all students will approach their examinations with honesty and integrity, and we wish you the best of luck in your studies.
+                </p>
+                <h5>Requirements:</h5>
+                <ul>
+                    <li>Internet (min :2mbps , preferred :8mbps)</li>
+                    <li>WebCam</li>
+                    <li>Any Browser</li>
+                    <li>Power backup preferred for uninterrupted exam</li>
+                </ul>
+                <p>
+                    Check your browser compatibility <a target="_blank" href="https://www.browserling.com/">here</a>
+                    <br>
+                    Check your internet speed <a target="_blank" href="https://www.openspeedtest.com">here</a>
+                </p>
+            </div>
+            <div class="d-flex justify-content-center">
+                <div class="acceptBtn">
+                    <button onclick="redirectToExam(event)">Accept & Take Exam</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        function redirectToExam(event){
+            event.preventDefault();
+            location.href ="{% url 'dashboard_exam-portal' %}";
+        }
+    </script>
+
+{% endblock %}
