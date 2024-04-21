@@ -1,0 +1,147 @@
+{% extends 'student/dashboard/Parent.html' %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-lg-3 col-md-6 col-sm-6">
+            <div class="card card-stats">
+                <div class="card-body ">
+                    <div class="row">
+                        <div class="col-5 col-md-4">
+                            <div class="icon-big text-center icon-warning">
+                                <i class="nc-icon nc-globe text-warning"></i>
+                            </div>
+                        </div>
+                        <div class="col-7 col-md-8">
+                            <div class="numbers">
+                                <p class="card-category">Attendance</p>
+                                <p class="card-title">89 %
+                                <p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-footer ">
+                    <hr>
+                    <div class="stats">
+                        <i class="fa fa-refresh"></i>
+                        Update Now
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-6 col-sm-6">
+            <div class="card card-stats">
+                <div class="card-body ">
+                    <div class="row">
+                        <div class="col-5 col-md-4">
+                            <div class="icon-big text-center icon-warning">
+                                <i class="nc-icon nc-money-coins text-success"></i>
+                            </div>
+                        </div>
+                        <div class="col-7 col-md-8">
+                            <div class="numbers">
+                                <p class="card-category">Credits Earned</p>
+                                <p class="card-title">76
+                                <p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-footer ">
+                    <hr>
+                    <div class="stats">
+                        <i class="fa fa-bitbucket"></i>
+                        89 required
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-6 col-sm-6">
+            <div class="card card-stats">
+                <div class="card-body ">
+                    <div class="row">
+                        <div class="col-5 col-md-4">
+                            <div class="icon-big text-center icon-warning">
+                                <i class="nc-icon nc-vector text-danger"></i>
+                            </div>
+                        </div>
+                        <div class="col-7 col-md-8">
+                            <div class="numbers">
+                                <p class="card-category">Semester</p>
+                                <p class="card-title">4<sup>th</sup>
+                                <p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-footer ">
+                    <hr>
+                    <div class="stats">
+                        <i class="fa fa-check"></i>
+                        cleared all papers
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-6 col-sm-6">
+            <div class="card card-stats">
+                <div class="card-body ">
+                    <div class="row">
+                        <div class="col-5 col-md-4">
+                            <div class="icon-big text-center icon-warning">
+                                <i class="nc-icon nc-favourite-28 text-primary"></i>
+                            </div>
+                        </div>
+                        <div class="col-7 col-md-8">
+                            <div class="numbers">
+                                <p class="card-category">Remaining Fee</p>
+                                <p class="card-title">$0
+                                <p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-footer ">
+                    <hr>
+                    <div class="stats">
+                        <i class="fa fa-refresh"></i>
+                        Update now
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card ">
+                <div class="card-header ">
+                    <h5 class="card-title">Notifications</h5>
+                    <p class="card-category">last 24 hours</p>
+                </div>
+                <div class="card-body " style="font-size: 1rem;">
+                    <ul>
+                        <li>New Assignment: You have a new assignment due in 2 days.</li>
+                        <li>Graded Assignment: Your assignment has been graded. Check your grade book for more details.</li>
+                        <li>Attendance: You have an upcoming attendance quiz.</li>
+                        <li>Event: There is a campus event happening today.</li>
+                        <li>Announcement: There is a new announcement from your instructor.</li>
+                        <li>Important Reminder: Don't forget to submit your final project by Friday!</li>
+                        <li>Password Reset: You have requested a password reset. Click here to reset your password.</li>
+                        <li>Financial Aid Update: Your financial aid award has been updated. Please log in to your account to
+                            view the details.</li>
+                        <li>Next PTA is on coming Monday</li>
+
+                    </ul>
+                </div>
+                <div class="card-footer mb-2">
+                    <hr>
+                    <div class="stats">
+                        <i class="fa fa-history"></i> Updated 3 minutes ago
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

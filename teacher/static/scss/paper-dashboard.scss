@@ -1,0 +1,53 @@
+/*!
+
+ =========================================================
+ * Paper Dashboard 2 - v2.0.1
+ =========================================================
+
+ * Product Page: https://www.creative-tim.com/product/paper-dashboard-2
+ * Copyright 2020 Creative Tim (http://www.creative-tim.com)
+
+ * Coded by www.creative-tim.com
+
+ =========================================================
+
+ * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+ */
+
+@import 'variables';
+@import 'mixins';
+
+// Plugins CSS
+@import "plugin-animate-bootstrap-notify";
+@import "plugin-perfect-scrollbar";
+
+// Core CSS
+@import "buttons";
+@import "inputs";
+@import "typography";
+@import "misc";
+@import "checkboxes-radio";
+
+
+// components
+@import "navbar";
+@import "page-header";
+@import "dropdown";
+@import "alerts";
+@import "images";
+@import "nucleo-outline";
+@import "tables";
+@import "sidebar-and-main-panel";
+@import "footers";
+@import "fixed-plugin";
+
+// cards
+@import "cards";
+@import "card-plain";
+@import "card-chart";
+@import "card-user";
+@import "card-map";
+@import "card-stats";
+
+@import "responsive";

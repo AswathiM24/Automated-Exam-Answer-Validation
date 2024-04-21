@@ -1,0 +1,350 @@
+{% extends 'teacher/dashboard/Parent.html' %}
+
+{% block content %}
+    <style>
+        /* The switch - the box around the slider */
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 60px;
+            height: 34px;
+        }
+
+        /* Hide default HTML checkbox */
+        .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        /* The slider */
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #c04949;
+            -webkit-transition: .4s;
+            transition: .4s;
+        }
+
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 26px;
+            width: 26px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            -webkit-transition: .4s;
+            transition: .4s;
+        }
+
+        input:checked + .slider {
+            background-color: #1b901b;
+        }
+
+        input:focus + .slider {
+            box-shadow: 0 0 1px #1b901b;
+        }
+
+        input:checked + .slider:before {
+            -webkit-transform: translateX(26px);
+            -ms-transform: translateX(26px);
+            transform: translateX(26px);
+        }
+
+        /* Rounded sliders */
+        .slider.round {
+            border-radius: 34px;
+        }
+
+        .slider.round:before {
+            border-radius: 50%;
+        }
+    </style>
+
+    <div class="d-flex justify-content-center row">
+
+        <div class="col-8 col-md-8 col-sm-12">
+                <div class="card card-user">
+                    <div class="card-header">
+                        <h5 class="card-title">Add Questions</h5>
+                    </div>
+                    <div class="card-body">
+                        <form>
+                            <div class="row">
+                                <div class="col-md-2 pr-1">
+                                    <div class="form-group">
+                                        <label for="ques_term">Term</label>
+                                        <input onchange="updateCourse()"  type="text" list="ques-term-list" class="form-control"  placeholder="Choose Term" id="ques_term">
+                                        <datalist id="ques-term-list">
+                                            {% for i in term_list %}
+                                                <option value="{{ i }}">{{ i }}</option>
+                                            {% endfor %}
+                                        </datalist>
+                                    </div>
+                                </div>
+                                <div class="col-md-2 px-1">
+                                    <div class="form-group">
+                                        <label for="ques-course">Course</label>
+                                        <input disabled=""  type="text" class="form-control" id="ques-course" placeholder="Enter Course">
+                                    </div>
+                                </div>
+                                <div class="col-md-8 pl-1">
+                                    <div class="form-group">
+                                        <label for="ques-question">Question</label>
+                                        <input type="email" id="ques-question" class="form-control" placeholder="Enter Question">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label for="ques-answer">Answer Key</label>
+                                        <textarea id="ques-answer" class="form-control textarea" placeholder="Enter general answers keys"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="update ml-auto mr-auto">
+                                    <button onclick="add_question(event)" type="submit" class="btn btn-primary btn-round">Add Question</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+        </div>
+
+        <div class="col-4 col-md-4 col-sm-12">
+            <div class="card card-user">
+                <div class="card-header">
+                    <h4 class="card-title">Term Management</h4>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-4 pr-1">
+                            <div class="form-group">
+                                <label for="ter-term">Term</label>
+                                <input type="text" list="ter-term-list" class="form-control" onchange="updateCourseOptions()"  placeholder="Exam Term" id="ter-term">
+                                <datalist id="ter-term-list">
+                                    {% for i in term_list %}
+                                        <option value="{{ i }}">{{ i }}</option>
+                                    {% endfor %}
+                                </datalist>
+                            </div>
+                        </div>
+                        <div class="col-md-4 pr-1">
+                            <div class="form-group">
+                                <label for="ter-course">Course</label>
+                                <input type="text" class="form-control"   id="ter-course">
+                            </div>
+                        </div>
+                        <div class="col-md-4 pr-1">
+                            <div class="form-group">
+                                <label>Status</label>
+                                <br>
+                                <label class="switch">
+                                    <input id="ter-status" type="checkbox">
+                                    <span class="slider round"></span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="update ml-auto mr-auto d-flex justify-content-center">
+                                <button type="submit" onclick="TermSubmit(event)" class="btn mb-0 btn-primary btn-round ">Add Term</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row m-0">
+                        <div class="col-12 col-md-12">
+                            <div class="form-group">
+                                <label for="ter-del-term">Delete Term</label>
+                                <br>
+                                <select id="ter-del-term" class="form-control">
+                                    {% for i in term_list %}
+                                        <option value="{{ i }}">{{ i }}</option>
+                                    {% endfor %}
+                                </select>
+
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="update ml-auto mr-auto d-flex justify-content-center">
+                                <button onclick="deleteTerm(event)" type="submit" class="btn btn-primary btn-round ">Delete Term</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-12 col-md-12 col-sm-12">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="card-title"> Questions Pool</h4>
+                </div>
+                <div class="card-body">
+                    <div style="overflow:auto" class="table-responsive">
+                        <table class="table">
+                            <thead class=" text-primary">
+                            <tr>
+                                <th>
+                                    No.
+                                </th>
+                                <th>
+                                    Question
+                                </th>
+                                <th>
+                                    Answer Key
+                                </th>
+                                <th>
+                                    Course
+                                </th>
+                                <th>
+                                    Term
+                                </th>
+                                <th>
+                                    Action
+                                </th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for i in Questions %}
+                            <tr>
+                                <td>
+                                    {{ i.question_num }}
+                                </td>
+                                <td>
+                                    {{ i.question }}
+                                </td>
+                                <td>
+                                    {{ i.answer }}
+                                </td>
+                                <td >
+                                    {{ i.std }}
+                                </td>
+                                <td >
+                                    {{ i.paper_code.paper_code }}
+                                </td>
+                                <td style="color:red" class="text-center">
+                                    <i class="fa fa-trash-o"></i>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        let Terms = []
+        // auto generated insertion
+        {% for i in term %}
+            let obj_{{ forloop.counter }} =  {
+                'id': {{ i.id }},
+                'paper_code': '{{ i.paper_code }}',
+                'std': '{{ i.std }}',
+                'is_active': {{ i.is_active|lower }}
+            }
+            Terms.push(obj_{{ forloop.counter }});
+        {% endfor %}
+        //end of auto generation insertion
+        function updateCourseOptions() {
+            let selectedTerm = document.getElementById("ter-term").value;
+            for(let i = 0 ;i<Terms.length;i++) {
+                if (Terms[i]['paper_code'] === selectedTerm) {
+                    document.getElementById("ter-course").value = Terms[i]['std'];
+                    if (Terms[i]['is_active']){
+                        document.getElementById("ter-status").checked =true;
+                    }else{
+                        document.getElementById("ter-status").checked =false;
+                    }
+                }
+            }
+        }
+
+        function TermSubmit(event){
+            event.preventDefault();
+            $.ajax({
+                url: "{% url 'term_modify' %}",
+                type: "POST",
+                data: {
+                    'paper_code':document.getElementById("ter-term").value,
+                    'std':document.getElementById("ter-course").value,
+                    'active':document.getElementById('ter-status').checked,
+                    'csrfmiddlewaretoken': '{{ csrf_token }}',
+                },
+                dataType: "json",
+                success: (data) => {
+                   location.reload();
+                },
+                error: (error) => {
+                    console.log("err test");
+                    console.log(error.details);
+                }
+            });
+        }
+
+        function deleteTerm(event){
+            event.preventDefault();
+            $.ajax({
+                url: "{% url 'term_delete' %}",
+                type: "POST",
+                data: {
+                    'paper_code':document.getElementById("ter-del-term").value,
+                    'csrfmiddlewaretoken': '{{ csrf_token }}',
+                },
+                dataType: "json",
+                success: (data) => {
+                    location.reload();
+                },
+                error: (error) => {
+                    console.log(error);
+                }
+            });
+        }
+
+        function updateCourse(){
+            let selectedTerm = document.getElementById("ques_term").value;
+            for(let i = 0 ;i<Terms.length;i++) {
+                if (Terms[i]['paper_code'] === selectedTerm) {
+                    document.getElementById("ques-course").value = Terms[i]['std'];
+                }
+            }
+        }
+
+        function add_question(event){
+            event.preventDefault();
+            let term = document.getElementById("ques_term").value;
+            let question = document.getElementById("ques-question").value;
+            let answer = document.getElementById("ques-answer").value;
+            $.ajax({
+                url: "{% url 'add_question' %}",
+                type: "POST",
+                data: {
+                    'term':term,
+                    'question':question,
+                    'answer':answer,
+                    'csrfmiddlewaretoken': '{{ csrf_token }}',
+                },
+                dataType: "json",
+                success: (data) => {
+                    location.reload();
+                },
+                error: (error) => {
+                    console.log(error);
+                }
+            });
+        }
+
+
+    </script>
+
+{% endblock %}
